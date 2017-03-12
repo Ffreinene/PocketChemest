@@ -26,7 +26,7 @@ public class DrawThread extends Thread {
     Bitmap soda;
     double middle;
     double touchPrevX, touchPrevY;
-    boolean isTouchPrev = false;
+
 
 
     public DrawThread(Context context, SurfaceHolder surfaceHolder) {
@@ -103,35 +103,28 @@ public class DrawThread extends Thread {
                         sodaY += 10;
                         vinegarY += 10;
                     }
-
+//                    Если касание в квадрате уксуса
                     if (touchX <= vinegar.getWidth() && touchY <= vinegar.getHeight()) {
-                        if (isTouchPrev) {
-                            touchPrevX = touchX;
-                            touchPrevY = touchY;
-                        }
-                        isTouchPrev = true;
+//                        Запомнить координаты
+                            touchPrevX = touchX-vinegarX;
+                            touchPrevY = touchY-vinegarY;
                         if (touchX != touchPrevX || touchY != touchPrevY){
                             vinegarX = (int)(touchX-touchPrevX);
                             vinegarY = (int)(touchY-touchPrevY);
-                            sodaX = canvas.getWidth()-vinegarX;
+//                            Положеие картинки с содой по X противоположно (весь размер-размер картинки с  уксусом-
+//                            -размер картинки с содой), а по Y анологично
+                            sodaX = canvas.getWidth()-vinegarX-sodaX;
                             sodaY = vinegarY;
 
                         }
                     } else if (touchX >= sodaX && touchY >= sodaY) {
 
-                    }
+                    } // Если касание вне области действия
 
-//                    if (sodaY != 0 && vinegarY != 0) {
-                        if (touchX >= rect.centerX() - rect.centerX() / 4 &&
-                                touchX <= rect.centerX() + rect.centerX() - rect.centerX() / 4 - rectLeft &&
-                                touchY >= rect.centerY() && touchY <= rectBottom) {
-                            paint.setStyle(Paint.Style.FILL);
-                            paint.setColor(Color.YELLOW);
-                            canvas.drawRect(flask.left, flask.centerY(), flask.right, flask.bottom, paint);
-                            paint.setColor(Color.BLUE);
-                            canvas.drawRect(flask.left, flask.top, flask.right, flask.centerY(), paint);
-                        }
-//                    }
+
+
+
+
 
                 } finally {
                     surfaceHolder.unlockCanvasAndPost(canvas);
@@ -140,7 +133,5 @@ public class DrawThread extends Thread {
         }
     }
 
-    private void crawl() {
 
-    }
 }
