@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Pocket Chemest</string>
+    <string name="registration">Зарегестрироваться</string>
+    <string name="settings">Настройки</string>
+    <string name="about">О программе</string>
+    <string name="start">Уроки</string>
+    <string name="enter_name">Введите имя</string>
+    <string name="enter_surname">Введите фамилию</string>
+    <string name="ok">Готово</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="addUser">Добавить пользователя</string>
+    <string name="login">Войти</string>
+    <string name="firstExpirement">Нажмите на прямоугольник</string>
+</resources>
