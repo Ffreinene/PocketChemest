@@ -65,43 +65,13 @@ public class DrawThread extends Thread {
                     Rect rect = new Rect(rectLeft, rectTop, rectRight, rectBottom);
                     canvas.drawRect(rect, paint);
 
-//                    canvas.drawLine(rect.centerX(),rectTop,rect.centerX(),rectBottom, paint);
 
                     Rect flask = new Rect(rect.centerX() - rect.centerX() / 4, rect.centerY(),
                             rect.centerX() + (rect.centerX() - rect.centerX() / 4 - rectLeft), rectBottom);
-//                    Log.d("AnimDebug","left = " + rectLeft + "");
-//                    Log.d("AnimDebug","rect = " + (rect.centerX()-rect.centerX()/4) + "");
-//                    Log.d("AnimDebug","center = " + rect.centerX());
                     canvas.drawRect(flask, paint);
-//                    boolean debug_end;
-//                    debug_end = true;
-//                    if (debug_end) {
-//                        Log.d("RectDebug", "left = " + canvas.getWidth() / 4 + " top = " + canvas.getHeight() / 4 + " right = " + canvas.getWidth() / 4 * 3 + " bottom = " + canvas.getHeight() / 4 * 3);
-//                    }
-//                        debug_end = false;
                     if (touchX > canvas.getWidth() / 4 && touchX < canvas.getWidth() / 4 * 3
                             && touchY > canvas.getHeight() / 4 && touchY < canvas.getHeight() / 4 * 3) {
-                        isGoing[0] = true;
-                        isGoing[1] = true;
-                    }
 
-                    if (sodaY + soda.getHeight() >= rect.centerY() && vinegarY + vinegar.getHeight() >= rect.centerY())
-                        isGoing[1] = false;
-
-                    if (sodaX >= canvas.getWidth() / 2 && vinegarX + vinegar.getWidth() >= canvas.getWidth() / 2) {
-                        isGoing[0] = false;
-                        isGoing[1] = false;
-                    }
-
-//                    isGoing[0] - X
-                    if (isGoing[0]) {
-                        sodaX -= 10;
-                        vinegarX += 10;
-                    }
-//                    isGoing[1] - Y
-                    if (isGoing[1]) {
-                        sodaY += 10;
-                        vinegarY += 10;
                     }
 //                    Если касание в квадрате уксуса
                     if (touchX <= vinegar.getWidth() && touchY <= vinegar.getHeight()) {
